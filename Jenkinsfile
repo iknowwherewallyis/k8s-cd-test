@@ -1,4 +1,3 @@
-{
      podTemplate(label: 'message-center',
         namespace: 'jenkins',
         nodeSelector: 'environment=dev',
@@ -49,5 +48,4 @@
             app.push("latest")
         }
     }
-}
 }
