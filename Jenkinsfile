@@ -6,14 +6,15 @@ podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/ru
     def app
 
     stage('Clone repository') {
-    container('jnlp')
+            container('jnlp'){
         /* Let's make sure we have the repository cloned to our workspace */
 
         checkout scm
     }
+    }
 
     stage('Build image') {
-        container('jnlp')
+            container('jnlp'){
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         sh "hostname"
@@ -21,6 +22,7 @@ podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/ru
         sh "ls"
         sh "whoami"
         app = docker.build("getintodevops/hellonode")
+            }
     }
     }
 }
