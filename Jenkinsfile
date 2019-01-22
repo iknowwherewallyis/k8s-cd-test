@@ -1,3 +1,8 @@
+    podTemplate(label: 'test',
+        namespace: 'jenkins',
+        nodeSelector: 'environment=dev',
+        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+    ) 
 node {
     def app
 
