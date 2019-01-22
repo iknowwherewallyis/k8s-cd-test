@@ -8,7 +8,7 @@
                 alwaysPullImage: true,
                 image: 'ccthub/jkslave'
             )])
-    node {
+    node ('message-center'){
     def app
 
     stage('Clone repository') {
