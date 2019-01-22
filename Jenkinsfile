@@ -1,7 +1,7 @@
 podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
-        ])
+        ]){
     node ('message-center'){
     def app
 
@@ -21,5 +21,6 @@ podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/ru
         sh "ls"
         sh "whoami"
         app = docker.build("getintodevops/hellonode")
+    }
     }
 }
