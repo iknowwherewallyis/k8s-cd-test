@@ -1,13 +1,7 @@
-     podTemplate(label: 'message-center',
-        namespace: 'jenkins',
-        nodeSelector: 'environment=dev',
-        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         containers: [
-            containerTemplate(
-                name: 'jnlp',
-                alwaysPullImage: true,
-                image: 'ccthub/jkslave'
-            )])
+            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
+        ])
     node ('message-center'){
     def app
 
