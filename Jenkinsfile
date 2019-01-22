@@ -11,8 +11,8 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         sh "whoami"
-        sh "grep /etc/group -e "docker""
-        sh "grep /etc/group -e "sudo""
+        sh "grep /etc/group -e 'docker'"
+        sh "grep /etc/group -e 'sudo'"
         app = docker.build("getintodevops/hellonode")
     }
 
