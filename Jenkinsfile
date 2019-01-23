@@ -21,7 +21,10 @@ podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/d
         sh "pwd"
         sh "ls"
         sh "whoami"
-        sh "kubectl get clusterroles --all-namespaces -o wide" 
+        sh "kubectl get clusterrolebindings --all-namespaces" 
+        sh "kubectl get clusterroles --all-namespaces"
+        sh "kubectl get rolebindings --all-namespaces"
+        sh "kubectl get roles --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
             }
     }
