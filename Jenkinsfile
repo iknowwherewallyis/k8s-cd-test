@@ -1,8 +1,8 @@
-podTemplate(label: 'message-center', volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
         ]){
-    node ('message-center'){
+    node ('docker-test'){
     def app
 
     stage('Clone repository') {
