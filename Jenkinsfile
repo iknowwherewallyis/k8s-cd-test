@@ -21,7 +21,8 @@ podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/d
         sh "pwd"
         sh "ls"
         sh "whoami"
-        app = docker.build("getintodevops/hellonode")
+        sh "kubectl get nodes -o wide" 
+        //app = docker.build("getintodevops/hellonode")
             }
     }
     }
