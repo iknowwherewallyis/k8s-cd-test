@@ -21,7 +21,7 @@ podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/d
         sh "pwd"
         sh "ls"
         sh "whoami"
-        sh "kubectl config current-context" 
+        sh "kubectl get serviceaccounts --all-namespaces" 
         //app = docker.build("getintodevops/hellonode")
             }
     }
