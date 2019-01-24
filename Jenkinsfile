@@ -21,7 +21,7 @@ podTemplate(label: 'docker-test', serviceAccount: 'jenkins', volumes: [hostPathV
         sh "pwd"
         sh "ls"
         sh "whoami"
-        sh "kubectl get svc -n jenkins --serviceaccount=jenkins"
+        sh "kubectl get svc -n jenkins"
         //app = docker.build("getintodevops/hellonode")
             }
     }
