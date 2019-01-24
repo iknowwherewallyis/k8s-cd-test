@@ -21,7 +21,7 @@ podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/d
         sh "pwd"
         sh "ls"
         sh "whoami"
-        sh "kubectl config view"
+        sh "kubectl get svc -n jenkins"
         //app = docker.build("getintodevops/hellonode")
             }
     }
