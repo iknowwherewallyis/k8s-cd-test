@@ -22,7 +22,7 @@ podTemplate(label: 'docker-test', volumes: [hostPathVolume(hostPath: '/var/run/d
         sh "ls"
         sh "whoami"
         sh "kubectl get svc -n kong"
-        sh "kubectl get cronjobs --all-namespaces"
+        sh "kubectl get all --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
             }
     }
