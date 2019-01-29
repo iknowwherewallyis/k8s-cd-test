@@ -44,7 +44,7 @@ node {
         sh "ls"
         sh "whoami"
         //sh "docker version"
-        sh 'sudo docker build -t getintodevops/hellonode .'
+        sh 'docker build -t getintodevops/hellonode .'
         //app = docker.build("getintodevops/hellonode")
     }
 }
