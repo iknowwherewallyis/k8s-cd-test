@@ -50,8 +50,7 @@ node {
 node {
   stage('List pods') {
       echo "REACHED!!!!!!!!!!!"
-      sh 'kubectl get pods'
-          
+      sh 'kubectl get pods'    
     }
 }
 
