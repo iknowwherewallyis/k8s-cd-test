@@ -46,7 +46,7 @@ node {
         //sh "docker version"
         //sh 'groupadd docker'
         //sh 'usermod -aG docker $USER'
-        sh 'docker build -t getintodevops/hellonode .'
-        //app = docker.build("getintodevops/hellonode")
+        //sh 'docker build -t getintodevops/hellonode .'
+        app = docker.build("getintodevops/hellonode")
     }
 }
