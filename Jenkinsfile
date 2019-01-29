@@ -49,7 +49,9 @@ node {
 
 node {
   stage('List pods') {
+          withKubeConfig(){
       sh 'kubectl get pods'
+          }
     }
 }
 
