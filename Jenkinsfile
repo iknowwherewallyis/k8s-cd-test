@@ -60,10 +60,6 @@ node {
 
 node {
   stage('List pods') {
-    withKubeConfig(
-node {
-
-  stage('List pods') {
     withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
                     serverUrl: 'https://kubernetes.default',
                     contextName: 'cct.marketing',
