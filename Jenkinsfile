@@ -61,7 +61,7 @@ node {
 node {
   stage('List pods') {
     withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
-                    caCertificate: '-----BEGIN CERTIFICATE-----
+                    caCertificate: '''-----BEGIN CERTIFICATE-----
 MIIGCDCCA/CgAwIBAgIQKy5u6tl1NmwUim7bo3yMBzANBgkqhkiG9w0BAQwFADCB
 hTELMAkGA1UEBhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4G
 A1UEBxMHU2FsZm9yZDEaMBgGA1UEChMRQ09NT0RPIENBIExpbWl0ZWQxKzApBgNV
@@ -191,7 +191,7 @@ v6A8LakjJ4y5txSxwY7cvV1COinNwP1aiI32Fa9vPnxTERF1E0nbfYi18ai7qg0m
 DqJcOpZGGl7kv9imToguzeA9WiRt/r5/k/tglwk5FjhQoIyNW9xpFlgMDsrM0/mm
 w59nF+qJCMx3zTijh0gKLmdRt2wFEBI6aRcnybok5BxRsHzvzO7ogK8b6WZZWX/Z
 Tq4mQ/mBYueU/+My3zEIIsofD1DEN0K0R7gjOQ==
------END CERTIFICATE-----',
+-----END CERTIFICATE-----''',
                     serverUrl: 'https://kubernetes.default',
                     contextName: 'cct.marketing',
                     clusterName: 'cct.marketing'
