@@ -6,10 +6,10 @@ podTemplate(label: 'docker-test',
     def app
 
     stage('Clone repository') {
-            container('jnlp'){ 
-
+            //container('jnlp'){ 
+        app = docker.build("getintodevops/hellonode")
         checkout scm
-    }
+    //}
     }
 
     stage('Build image') {
