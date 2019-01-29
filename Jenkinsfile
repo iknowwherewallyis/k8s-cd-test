@@ -44,7 +44,7 @@ node {
         sh "ls"
         sh "whoami"
         //sh "docker version"
-        sh 'systemd start docker'
+        sh 'rc-service docker start'
         //sh 'docker build -t getintodevops/hellonode .'
         //app = docker.build("getintodevops/hellonode")
     }
