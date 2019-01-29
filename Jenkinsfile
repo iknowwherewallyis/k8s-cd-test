@@ -43,6 +43,7 @@ node {
         sh "pwd"
         sh "ls"
         sh "whoami"
+        sh "docker version"
         app = docker.build("getintodevops/hellonode")
     }
 }
