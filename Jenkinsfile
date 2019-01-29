@@ -50,6 +50,7 @@ node {
 node {
   stage('List pods') {
           withKubeConfig(){
+      echo "REACHED!!!!!!!!!!!"
       sh 'kubectl get pods'
           }
     }
