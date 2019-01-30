@@ -21,7 +21,7 @@ node {
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+            //volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
@@ -33,7 +33,7 @@ podTemplate(label: 'docker-test',
     stage('Clone repository') {
             //container('jnlp'){ 
         sh "hostname"
-        sh "kubectl get po --all-namespaces"
+        sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         checkout scm
         app = docker.build("getintodevops/hellonode")
 
@@ -43,9 +43,6 @@ podTemplate(label: 'docker-test',
     stage('Build image') {
             container('jnlp'){
         sh "hostname"
-        sh "pwd"
-        sh "ls"
-        sh "whoami"
         //sh "kubectl get svc -n kong"
         sh "kubectl get po --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
