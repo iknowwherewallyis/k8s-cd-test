@@ -42,12 +42,12 @@ node {
     def app
 
     stage('Clone repository') {
-
+        sh "hostname"
         checkout scm
     }
 
     stage('Build image') {
-
+        sh "hostname"
         app = docker.build("getintodevops/hellonode")
     }
 }
