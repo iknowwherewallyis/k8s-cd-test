@@ -1,4 +1,4 @@
-podTemplate(label: 'docker-test',
+podTemplate(label: 'docker-test', serviceAccount: 'jenkins',
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
         ]){
