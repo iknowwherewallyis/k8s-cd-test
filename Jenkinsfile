@@ -1,6 +1,6 @@
 // USING DOCKER PLUGIN THIS WORKS WHEN RUN ON JENKINS MASTER 
 
-
+/*
 node {
     def app
 
@@ -14,10 +14,10 @@ node {
         app = docker.build("getintodevops/hellonode")
     }
 }
+*/
 
 
 
-/*
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
 podTemplate(label: 'docker-test', 
@@ -37,11 +37,11 @@ podTemplate(label: 'docker-test',
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
         //app = docker.build("getintodevops/hellonode")
-            withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
-                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
-                    ]) {
+          //  withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
+           //         serverUrl: 'https://api.cct.marketing',
+            //        contextName: 'cct.marketing',
+             //       clusterName: 'cct.marketing',
+              //      ]) {
       //sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
     }
@@ -60,7 +60,7 @@ podTemplate(label: 'docker-test',
     }
 }
 
-*/
+
 
 
 /*
