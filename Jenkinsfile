@@ -31,7 +31,7 @@ podTemplate(label: 'docker-test',
     def app
 
     stage('Clone repository') {
-            //container('jnlp'){ 
+            container('jnlp'){ 
         sh "hostname"
         sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         checkout scm
