@@ -37,7 +37,7 @@ podTemplate(label: 'docker-test',
         checkout scm
         app = docker.build("getintodevops/hellonode")
 
-    //}
+    }
     }
 
     stage('Build image') {
