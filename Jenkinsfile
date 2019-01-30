@@ -47,7 +47,7 @@ podTemplate(label: 'docker-test',
     }
 
     //}
-    }
+    //}
 
     stage('Build image') {
             container('jnlp'){
