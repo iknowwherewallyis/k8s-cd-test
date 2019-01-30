@@ -16,7 +16,7 @@ node {
 }
 */
 
-/*
+
 
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
@@ -35,8 +35,16 @@ podTemplate(label: 'docker-test',
      //       container('jnlp'){ 
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
-        checkout scm
-        app = docker.build("getintodevops/hellonode")
+        //checkout scm
+        //app = docker.build("getintodevops/hellonode")
+            withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
+                    serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+                    ]) {
+      //sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl cluster-info'
+    }
 
     //}
     }
@@ -46,14 +54,14 @@ podTemplate(label: 'docker-test',
         sh "hostname"
         //sh "kubectl get svc -n kong"
         //sh "kubectl get po --all-namespaces"
-        app = docker.build("getintodevops/hellonode")
+        //app = docker.build("getintodevops/hellonode")
             }
     }
     }
 }
 
 
-*/
+
 
 /*
 // CAN LIST RESOURCES JUST HAVING KUBECTL INSTALLED IN IMAGE. SHOULDN'T WORK THIS WAY (NO RBAC & ONLY WORKS ON MINIKUBE BECAUSE EVERYTHING RUNS ON MASTER NODE). 
@@ -83,9 +91,9 @@ node {
   }
   //  sh 'kubectl cluster-info'
 }
+
 */
-
-
+/*
 //MINIKUBE TEST
 node {
   stage('List pods') {
@@ -99,4 +107,4 @@ node {
   }
   //  sh 'kubectl cluster-info'
 }
-
+*/
