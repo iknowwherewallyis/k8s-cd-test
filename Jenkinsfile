@@ -76,7 +76,8 @@ node {
                     //contextName: 'cct.marketing',
                     //clusterName: 'cct.marketing',
                     ]) {
-      sh 'kubectl get pods --all-namespaces'
+      //sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl config view'
     }
   }
 }
