@@ -1,8 +1,11 @@
-podTemplate(label: 'docker-test', serviceAccount: 'jenkins:jenkins',
-        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
-        containers: [
+podTemplate(label: 'docker-test', 
+            serviceAccount: 'default',
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+        
+            containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
-        ]){
+            ])
+{
     node ('docker-test'){
     def app
 
