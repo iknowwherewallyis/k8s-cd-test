@@ -1,4 +1,6 @@
 // USING DOCKER PLUGIN THIS WORKS WHEN RUN ON JENKINS MASTER 
+
+/*
 node {
     def app
 
@@ -12,13 +14,14 @@ node {
         app = docker.build("getintodevops/hellonode")
     }
 }
+*/
 
-/*
+
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
-            //volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
@@ -51,7 +54,7 @@ podTemplate(label: 'docker-test',
     }
 }
 
-*/
+
 
 
 /*
