@@ -9,7 +9,7 @@ podTemplate(label: 'docker-test',
     stage('Clone repository') {
             //container('jnlp'){ 
         checkout scm
-        app = docker.build("getintodevops/hellonode")
+        //app = docker.build("getintodevops/hellonode")
 
     //}
     }
@@ -22,7 +22,7 @@ podTemplate(label: 'docker-test',
         sh "whoami"
         //sh "kubectl get svc -n kong"
         sh "kubectl get all --all-namespaces"
-        app = docker.build("getintodevops/hellonode")
+        //app = docker.build("getintodevops/hellonode")
             }
     }
     }
