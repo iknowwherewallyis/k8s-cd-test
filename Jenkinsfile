@@ -1,4 +1,4 @@
-podTemplate(label: 'docker-test', serviceAccount: 'jenkins'
+podTemplate(label: 'docker-test', serviceAccount: 'jenkins',
         volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
