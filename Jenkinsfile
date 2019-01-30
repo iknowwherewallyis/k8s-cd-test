@@ -1,4 +1,4 @@
-/*podTemplate(label: 'docker-test',
+podTemplate(label: 'docker-test',
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
         ]){
@@ -27,7 +27,7 @@
     }
 }
 
-*/
+
 
 /*
 
@@ -57,7 +57,7 @@ node {
 }
 
 */
-
+/*
 node {
   stage('List pods') {
     //withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
@@ -69,5 +69,5 @@ node {
     //}
   }
 }
-
+*/
 
