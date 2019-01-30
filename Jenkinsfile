@@ -1,6 +1,6 @@
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+            //volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
@@ -13,7 +13,7 @@ podTemplate(label: 'docker-test',
             //container('jnlp'){ 
         sh "kubectl get po --all-namespaces"
         checkout scm
-        //app = docker.build("getintodevops/hellonode")
+        app = docker.build("getintodevops/hellonode")
 
     //}
     }
