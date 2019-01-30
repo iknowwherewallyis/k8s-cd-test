@@ -11,6 +11,7 @@ podTemplate(label: 'docker-test',
 
     stage('Clone repository') {
             //container('jnlp'){ 
+        sh "kubectl get po --all-namespaces"
         checkout scm
         //app = docker.build("getintodevops/hellonode")
 
@@ -24,7 +25,7 @@ podTemplate(label: 'docker-test',
         sh "ls"
         sh "whoami"
         //sh "kubectl get svc -n kong"
-        sh "kubectl get all --all-namespaces"
+        sh "kubectl get po --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
             }
     }
