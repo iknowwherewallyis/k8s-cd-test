@@ -11,6 +11,7 @@ podTemplate(label: 'docker-test',
 
     stage('Clone repository') {
             //container('jnlp'){ 
+        sh "hostname"
         sh "kubectl get po --all-namespaces"
         checkout scm
         app = docker.build("getintodevops/hellonode")
