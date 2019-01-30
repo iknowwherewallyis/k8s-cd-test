@@ -73,7 +73,7 @@ node {
     withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
                     serverUrl: 'https://kubernetes.default',
                     contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing'
+                    clusterName: 'cct.marketing',
                     ]) {
       sh 'kubectl get pods --all-namespaces'
     }
