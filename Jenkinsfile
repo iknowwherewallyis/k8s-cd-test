@@ -20,7 +20,7 @@ podTemplate(label: 'docker-test',
         sh "ls"
         sh "whoami"
         //sh "kubectl get svc -n kong"
-        //sh "kubectl get all --all-namespaces"
+        sh "kubectl get all --all-namespaces"
         app = docker.build("getintodevops/hellonode")
             }
     }
