@@ -1,4 +1,5 @@
 podTemplate(label: 'docker-test',
+        volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
         containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
         ]){
