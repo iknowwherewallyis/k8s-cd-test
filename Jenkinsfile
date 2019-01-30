@@ -68,6 +68,7 @@ node {
 */
 
 
+/*
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
   stage('List pods') {
@@ -82,5 +83,20 @@ node {
   }
   //  sh 'kubectl cluster-info'
 }
+*/
 
+
+//MINIKUBE TEST
+node {
+  stage('List pods') {
+    withKubeConfig([serverUrl: 'https://192.168.99.117:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
+                    ]) {
+      //sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl cluster-info'
+    }
+  }
+  //  sh 'kubectl cluster-info'
+}
 
