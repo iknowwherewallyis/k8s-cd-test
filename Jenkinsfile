@@ -1,6 +1,6 @@
 // USING DOCKER PLUGIN THIS WORKS WHEN RUN ON JENKINS MASTER 
 
-/*
+
 node {
     def app
 
@@ -14,7 +14,7 @@ node {
         app = docker.build("getintodevops/hellonode")
     }
 }
-*/
+
 
 /*
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
@@ -66,7 +66,7 @@ node {
 
 */
 
-
+/*
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
   stage('List pods') {
@@ -79,5 +79,5 @@ node {
     }
   }
 }
-
+*/
 
