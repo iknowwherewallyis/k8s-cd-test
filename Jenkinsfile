@@ -72,12 +72,12 @@ node {
 node {
   stage('List pods') {
     withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
-                    serverUrl: 'https://api.cct.marketing',
-                    //contextName: 'cct.marketing',
-                    //clusterName: 'cct.marketing',
+                    //serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
                     ]) {
       //sh 'kubectl get pods --all-namespaces'
-      sh 'kubectl config view'
+      sh 'kubectl cluster-info'
     }
   }
 }
