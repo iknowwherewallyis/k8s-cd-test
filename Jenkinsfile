@@ -12,6 +12,11 @@ podTemplate(label: 'docker-test',
 
     node ('docker-test'){
     def app
+           stage('Clone repository') {
+        /* Let's make sure we have the repository cloned to our workspace */
+                    checkout scm
+                    }
+                
             stage ('Build Application image') {
                 container('jnlp') {
                     //def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
