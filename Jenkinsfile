@@ -69,7 +69,7 @@ podTemplate(label: 'docker-test',
         //app = docker.build("getintodevops/hellonode")
             }
     //}
-    }
+    //}
 }
 }
 
