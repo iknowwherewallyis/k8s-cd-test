@@ -26,7 +26,7 @@ podTemplate(label: 'docker-test',
         
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
-            ]),
+            ])
            withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
