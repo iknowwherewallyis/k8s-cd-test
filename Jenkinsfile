@@ -31,11 +31,11 @@ podTemplate(label: 'docker-test',
 {
 
     node ('docker-test'){
-           //withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
-            //        serverUrl: 'https://api.cct.marketing',
-            //        contextName: 'cct.marketing',
-            //        clusterName: 'cct.marketing',
-            //          ]) {
+           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+                    serverUrl: 'https://192.168.99.117:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
+                      ]) {
     def app
 
     stage('Clone repository') {
@@ -68,7 +68,7 @@ podTemplate(label: 'docker-test',
         //sh "kubectl get po --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
             }
-    //}
+    }
     //}
 }
 }
