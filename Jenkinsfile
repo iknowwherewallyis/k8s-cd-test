@@ -45,7 +45,7 @@ podTemplate(label: 'docker-test',
 
       //sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
-      sh 'kubectl get deployment jenkins-leader --namespace=jenkins -o jsonpath='{.metadata.generation}''
+      sh 'kubectl get deployment jenkins-leader --namespace=jenkins -o jsonpath={.metadata.generation}'
     }
 
     }
