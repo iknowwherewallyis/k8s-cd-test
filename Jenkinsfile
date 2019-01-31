@@ -32,21 +32,22 @@ podTemplate(label: 'docker-test',
     def app
 
     stage('Clone repository') {
-     //       container('jnlp'){ 
+     //       container('jnlp'){
+           withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
+                    serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+                    ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
         //app = docker.build("getintodevops/hellonode")
-          //  withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
-           //         serverUrl: 'https://api.cct.marketing',
-            //        contextName: 'cct.marketing',
-             //       clusterName: 'cct.marketing',
-              //      ]) {
+
       //sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
     }
 
-    //}
+    }
     //}
 
     stage('Build image') {
