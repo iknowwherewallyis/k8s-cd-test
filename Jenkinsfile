@@ -33,7 +33,7 @@ podTemplate(label: 'docker-test',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
                     clusterName: 'cct.marketing',
-                    ]) 
+                      ]) {
     node ('docker-test'){
     def app
 
@@ -67,6 +67,7 @@ podTemplate(label: 'docker-test',
             }
     //}
     }
+}
 }
 
 
