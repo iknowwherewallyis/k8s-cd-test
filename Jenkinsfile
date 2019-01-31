@@ -59,7 +59,7 @@ podTemplate(label: 'docker-test',
         //sh "kubectl get po --all-namespaces"
         //app = docker.build("getintodevops/hellonode")
             }
-    }
+    //}
     }
 }
 
