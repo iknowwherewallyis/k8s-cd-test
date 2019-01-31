@@ -31,11 +31,11 @@ podTemplate(label: 'docker-test',
 {
 
     node ('docker-test'){
-           withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
-                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
-                      ]) {
+           //withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+            //        serverUrl: 'https://api.cct.marketing',
+            //        contextName: 'cct.marketing',
+            //        clusterName: 'cct.marketing',
+            //          ]) {
     def app
 
     stage('Clone repository') {
