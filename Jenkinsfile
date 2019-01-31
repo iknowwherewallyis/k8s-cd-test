@@ -88,7 +88,7 @@ node {
 
 */
 
-
+/*
 
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
@@ -105,10 +105,10 @@ node {
   //  sh 'kubectl cluster-info'
 }
 
+*/
 
 
 
-/*
 //MINIKUBE TEST
 node {
   stage('List pods') {
@@ -119,8 +119,10 @@ node {
                       ]) {
       sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
+      sh 'kubectl -n jenkins set image deployment/jenkins-leader ccthub/jenkins=ccthub/jenkins:1.1'
+      //kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.91 --record=true
     }
   }
   //  sh 'kubectl cluster-info'
 }
-*/
+
