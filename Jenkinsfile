@@ -32,7 +32,7 @@ podTemplate(label: 'docker-test',
     def app
 
     stage('Clone repository') {
-     //       container('jnlp'){
+           container('jnlp'){
            withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
@@ -48,7 +48,7 @@ podTemplate(label: 'docker-test',
     }
 
     }
-    //}
+    }
 
     stage('Build image') {
             container('jnlp'){
