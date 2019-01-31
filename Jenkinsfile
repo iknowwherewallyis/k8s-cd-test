@@ -28,7 +28,7 @@ podTemplate(label: 'docker-test',
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:7344b465-9564-452b-89dd-1f21589bfc35'){
 
                     //app.push("test-delete")
-                    //}
+                    }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
                     //        printf "\n\n------------------------------\n\n"'''
