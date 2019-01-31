@@ -88,12 +88,12 @@ node {
 
 */
 
-/*
+
 
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
   stage('List pods') {
-    withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+    withKubeConfig([credentialsId: 'f08dfcf7-2740-4d7d-ad82-1d4ea4e464fa',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
                     clusterName: 'cct.marketing',
@@ -105,8 +105,10 @@ node {
   //  sh 'kubectl cluster-info'
 }
 
-*/
 
+
+
+/*
 //MINIKUBE TEST
 node {
   stage('List pods') {
@@ -121,4 +123,4 @@ node {
   }
   //  sh 'kubectl cluster-info'
 }
-
+*/
