@@ -23,8 +23,7 @@ podTemplate(label: 'docker-test',
                     //def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                     //sh 'aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh'
                     app = docker.build("ccthub/jenkins")
-                    aws = sh 'aws ecr get-login --no-include-email --region eu-central-1'
-                    docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', aws){
+                    docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:credential-id'){
 
                     //app.push("test-delete")
                     }
