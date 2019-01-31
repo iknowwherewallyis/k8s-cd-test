@@ -17,7 +17,7 @@ node {
 */
 
 
-
+/*
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
 podTemplate(label: 'docker-test', 
@@ -74,7 +74,7 @@ podTemplate(label: 'docker-test',
 }
 
 
-
+*/
 
 /*
 // CAN LIST RESOURCES JUST HAVING KUBECTL INSTALLED IN IMAGE. SHOULDN'T WORK THIS WAY (NO RBAC & ONLY WORKS ON MINIKUBE BECAUSE EVERYTHING RUNS ON MASTER NODE). 
@@ -106,18 +106,19 @@ node {
 }
 
 */
-/*
+
 //MINIKUBE TEST
 node {
   stage('List pods') {
-    withKubeConfig([serverUrl: 'https://192.168.99.117:8443',
+           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+                    serverUrl: 'https://192.168.99.117:8443',
                     contextName: 'minikube',
                     clusterName: 'minikube',
-                    ]) {
+                      ]) {
       //sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
     }
   }
   //  sh 'kubectl cluster-info'
 }
-*/
+
