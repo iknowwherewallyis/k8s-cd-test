@@ -39,6 +39,7 @@ podTemplate(label: 'docker-test',
                     clusterName: 'cct.marketing',
                     ]) {
         sh "hostname"
+        sh 'aws ecr get-login --no-include-email --region eu-central-1'
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
         //app = docker.build("getintodevops/hellonode")
