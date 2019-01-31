@@ -119,7 +119,7 @@ node {
                       ]) {
       sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
-      sh 'kubectl -n jenkins set image deployment/jenkins-leader ccthub/jenkins:test=ccthub/jenkins:1.1'
+      sh 'kubectl -n jenkins set image deployment/jenkins-leader jenkins-leader=ccthub/jenkins:1.1'
       //kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.91 --record=true
     }
   }
