@@ -15,6 +15,10 @@ podTemplate(label: 'docker-test',
     def aws
            stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
+           docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:eccb6983-512a-4af8-8648-dd898463a0df'){
+
+                    //app.push("test-delete")
+                    }
                     checkout scm
                     }
                 
