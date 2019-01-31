@@ -36,6 +36,6 @@ podTemplate(label: 'docker-test',
                     //sh "docker tag ccthub/jenkins:test-delete ccthub/jenkins:test-delete"
                     //sh "ecr_push.sh ${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
                 //}
-            }
+            //}
         }
 }
