@@ -26,18 +26,23 @@ podTemplate(label: 'docker-test',
         
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
-            ])
+            ]),
+           withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+                    serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+                    ]) 
 {
     node ('docker-test'){
     def app
 
     stage('Clone repository') {
            container('jnlp'){
-           withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
-                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
-                    ]) {
+           //withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+             //       serverUrl: 'https://api.cct.marketing',
+               //     contextName: 'cct.marketing',
+                 //   clusterName: 'cct.marketing',
+                   // ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
@@ -46,7 +51,7 @@ podTemplate(label: 'docker-test',
       //sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
       sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
-    }
+   // }
 
     }
     }
