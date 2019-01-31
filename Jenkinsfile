@@ -115,7 +115,7 @@ node {
                     contextName: 'minikube',
                     clusterName: 'minikube',
                       ]) {
-      //sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl get pods --all-namespaces'
       sh 'kubectl cluster-info'
     }
   }
