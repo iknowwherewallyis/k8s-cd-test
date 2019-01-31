@@ -21,9 +21,11 @@ podTemplate(label: 'docker-test',
                 container('jnlp') {
                     //def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                     //sh 'aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh'
-                    docker.withRegistry('https://cloud.docker.com/ccthub/', '282d475f-59e5-4487-a019-088461c228d0'){
                     app = docker.build("ccthub/jenkins")
-                    docker.push("test-delete")
+                    
+                    docker.withRegistry('https://cloud.docker.com/ccthub/', '282d475f-59e5-4487-a019-088461c228d0'){
+
+                    app.push("test-delete")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
