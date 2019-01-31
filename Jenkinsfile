@@ -81,7 +81,7 @@ node {
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
   stage('List pods') {
-    withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+    withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
                     clusterName: 'cct.marketing',
