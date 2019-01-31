@@ -38,4 +38,3 @@ podTemplate(label: 'docker-test',
                 //}
             //}
         }
-}
