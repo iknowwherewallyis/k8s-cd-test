@@ -23,9 +23,9 @@ podTemplate(label: 'docker-test',
                     //sh 'aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh'
                     app = docker.build("ccthub/jenkins")
                     
-                    docker.withRegistry('https://cloud.docker.com', '282d475f-59e5-4487-a019-088461c228d0'){
+                    docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'eccb6983-512a-4af8-8648-dd898463a0df'){
 
-                    app.push("test-delete")
+                    //app.push("test-delete")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
