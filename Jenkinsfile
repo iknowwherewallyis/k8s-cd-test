@@ -23,7 +23,7 @@ podTemplate(label: 'docker-test',
                     //sh 'aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh'
                     docker.withRegistry('https://cloud.docker.com/ccthub/', '282d475f-59e5-4487-a019-088461c228d0'){
                     app = docker.build("ccthub/jenkins")
-                    app.push("test-delete")
+                    app.push("ccthub/jenkins:test-delete")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
