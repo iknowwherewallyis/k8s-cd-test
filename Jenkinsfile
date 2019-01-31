@@ -17,7 +17,7 @@ node {
 */
 
 
-/*
+
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
 podTemplate(label: 'docker-test', 
@@ -61,7 +61,7 @@ podTemplate(label: 'docker-test',
     }
 }
 
-*/
+
 
 
 /*
@@ -76,7 +76,7 @@ node {
 
 */
 
-
+/*
 
 //SEE ABOVE. THIS IS HOW THIS SHOULD BE SETUP TO USE KUBECTL CMDS. REPLACEMENT FOR SCRIPTS 
 node {
@@ -93,7 +93,7 @@ node {
   //  sh 'kubectl cluster-info'
 }
 
-
+*/
 /*
 //MINIKUBE TEST
 node {
