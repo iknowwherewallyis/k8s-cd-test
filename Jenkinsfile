@@ -31,11 +31,11 @@ podTemplate(label: 'docker-test',
 {
 
     node ('docker-test'){
-           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
-                    serverUrl: 'https://192.168.99.117:8443',
-                    contextName: 'minikube',
-                    clusterName: 'minikube',
-                      ]) {
+           //withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+            //        serverUrl: 'https://192.168.99.117:8443',
+             //       contextName: 'minikube',
+               //     clusterName: 'minikube',
+                //      ]) {
     def app
 
     stage('Clone repository') {
@@ -56,7 +56,7 @@ podTemplate(label: 'docker-test',
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
    // }
 
-    }
+   // }
     }
 
     stage('Build image') {
