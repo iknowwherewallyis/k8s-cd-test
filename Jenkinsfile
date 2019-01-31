@@ -51,6 +51,7 @@ podTemplate(label: 'docker-test',
         //app = docker.build("getintodevops/hellonode")
 
       //sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl config current-context'
       sh 'kubectl cluster-info'
       sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
    // }
@@ -60,6 +61,7 @@ podTemplate(label: 'docker-test',
 
     stage('Build image') {
             //container('jnlp'){
+        sh 'kubectl config current-context'
         sh "hostname"
         sh 'aws ecr get-login --no-include-email --region eu-central-1'
         //sh "kubectl get svc -n kong"
