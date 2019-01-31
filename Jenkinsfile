@@ -51,8 +51,8 @@ podTemplate(label: 'docker-test',
         //app = docker.build("getintodevops/hellonode")
 
       //sh 'kubectl get pods --all-namespaces'
-      sh 'kubectl config current-context'
-      sh 'kubectl cluster-info'
+      //sh 'kubectl config current-context'
+      //sh 'kubectl cluster-info'
       sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
    // }
 
