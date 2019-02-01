@@ -101,7 +101,7 @@ podTemplate(label: 'docker-test',
       //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
-   // }
+    }
     }
     }
 
