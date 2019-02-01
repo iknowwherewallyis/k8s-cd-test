@@ -3,9 +3,9 @@
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
-    [$class: 'UsernamePasswordMultiBinding', credentialsId: 'K8s_CREDS', variable: 'K8S_CREDS'],
+    //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'K8s_CREDS', variable: 'K8S_CREDS'],
     //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS_CREDS', variable: 'AWS_CREDS'],
-    [$class: 'UsernamePasswordMultiBinding', credentialsId: 'DOCKERHUB_CREDS', variable: 'DOCKERHUB_CREDS']
+    //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DOCKERHUB_CREDS', variable: 'DOCKERHUB_CREDS']
 ]) {
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
@@ -18,8 +18,8 @@ podTemplate(label: 'docker-test',
 {
 
     node ('docker-test'){
-	   docker.withRegistry("${REPO_ADDRESS}", "${DOCKERHUB_CREDS}"){
-		   withKubeConfig([credentialsId: "${K8s_CREDS}",
+	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
+		   withKubeConfig([credentialsId: "K8s_CREDS",
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
                     clusterName: 'cct.marketing',
