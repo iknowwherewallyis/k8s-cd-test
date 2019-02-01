@@ -33,7 +33,7 @@ podTemplate(label: 'docker-test',
 		    echo "BUILDING IMAGE"
 		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
-
+		    echo "TAGGING IMAGE"
                     app.push("test-delete")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
