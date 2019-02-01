@@ -25,28 +25,16 @@ podTemplate(label: 'docker-test',
                     }
                 
             stage ('Build Application image') {
-                //container('jnlp') {
-                    //def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
-                    //sh '''aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh
-                    //	chmod 777 /auth.sh
-	            //source /auth.sh 2> /dev/null'''
+                container('jnlp') {
+   	        docker.withRegistry("${REPO_ADDRESS}", "282d475f-59e5-4487-a019-088461c228d0"){
 		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
-		    sh 'ls'
 		    echo "BUILDING IMAGE"
-		    app = docker.build('${PHP_REPO}', '-f Dockerfile.php .')
+		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
                     //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
-		    docker.withRegistry('${REPO_ADDRESS}', '282d475f-59e5-4487-a019-088461c228d0'){
 		    echo "TAGGING IMAGE"
-                    app.tag("latest")
     		    app.push("$commit_id")
 	            app.push("latest")
                     }
-                    //sh '''printf "\n\nPushing image: \n\n"
-                    //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
-                    //        printf "\n\n------------------------------\n\n"'''
-                    
-                    //sh "docker tag ccthub/jenkins:test-delete ccthub/jenkins:test-delete"
-                    //sh "ecr_push.sh ${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
                 }
             }
         }
