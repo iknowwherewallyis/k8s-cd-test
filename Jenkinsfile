@@ -25,6 +25,7 @@ podTemplate(label: 'docker-test',
     def app
     def image
     //def commit_id
+    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
 
            stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -35,7 +36,7 @@ podTemplate(label: 'docker-test',
                 container('jnlp') {
 		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 		    echo "BUILDING IMAGE"
-		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
+		    
 		    image = app
                     //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 		    echo "TAGGING IMAGE"
