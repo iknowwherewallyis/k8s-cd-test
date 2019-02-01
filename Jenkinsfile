@@ -1,9 +1,5 @@
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
-    environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-    }
 
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
@@ -18,6 +14,11 @@ podTemplate(label: 'docker-test',
     node ('docker-test'){
     def app
     def aws
+	        environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
            stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
                     checkout scm
