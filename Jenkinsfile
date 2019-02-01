@@ -46,8 +46,8 @@ podTemplate(label: 'docker-test',
  	     stage ('Publishing new php image') {
                 container('jnlp') {
                     def branch = sh(returnStdout: true, script: 'git name-rev --name-only HEAD|cut -f3 -d/').trim()
-                    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
-			echo "$commit_id"
+                    //def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
+			//echo "$commit_id"
                     if(branch == 'master') {
 			def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 			echo "$commit_id"
