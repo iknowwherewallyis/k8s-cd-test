@@ -74,8 +74,7 @@ podTemplate(label: 'docker-test',
 
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
-            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
-        
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
             containers: [
             containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
             ])
@@ -103,6 +102,6 @@ podTemplate(label: 'docker-test',
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
    // }
-   // }
+    }
     }
 
