@@ -80,24 +80,24 @@ podTemplate(label: 'docker-test',
             ])
 {
     node ('docker-test'){
-           withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
-                    serverUrl: 'https://192.168.99.117:8443',
-                    contextName: 'minikube',
-                    clusterName: 'minikube',
-                      ]) {
+           //withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
+            //        serverUrl: 'https://192.168.99.117:8443',
+            //        contextName: 'minikube',
+            //        clusterName: 'minikube',
+            //          ]) {
     def app
     stage('Clone repository') {
            container('jnlp'){
-           //withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
-             //       serverUrl: 'https://api.cct.marketing',
-               //     contextName: 'cct.marketing',
-                 //   clusterName: 'cct.marketing',
-                   // ]) {
+           withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
+                    serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+                    ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
         //app = docker.build("getintodevops/hellonode")
-      sh 'kubectl get pods --all-namespaces'
+      sh 'kubectl get pods'
       //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
