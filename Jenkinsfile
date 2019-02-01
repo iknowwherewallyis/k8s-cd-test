@@ -62,7 +62,7 @@ podTemplate(label: 'docker-test',
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                     if(branch == 'master') {
                         echo "Pushing image to remote registry with TAG 'production'..."
-                        phpImage.push("production")
+                        app.push("production")
                     }
                 }
             }
