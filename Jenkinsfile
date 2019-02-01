@@ -14,10 +14,14 @@ podTemplate(label: 'docker-test',
 
 {
 
-    node ('docker-test'){
+    node ('docker-test'){    
+           withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
+                    serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+			  ]){
+
     def app
-
-
 
            stage('Clone repository') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -37,6 +41,21 @@ podTemplate(label: 'docker-test',
                     }
                 }
             }
+ 	     stage ('Publishing new php image') {
+                container('jnlp') {
+                    def branch = sh(returnStdout: true, script: 'git name-rev --name-only HEAD|cut -f3 -d/').trim()
+                    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
+                    if(branch == 'master') {
+                        //sh "update_job.sh ${K8S_NAMESPACE} ${PHP_JOB} ${PHP_JOB} ${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
+			sh 'kubectl -n default set image cronjob.batch/test test=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}'
+                    }
+                    if(branch != 'master') {
+                        sh "echo 'Unsupported branch.'"
+                        sh "exit 1"
+                    }
+                }
+            }
         }
     }
+}
 }
