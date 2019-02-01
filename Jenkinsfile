@@ -47,7 +47,7 @@ podTemplate(label: 'docker-test',
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                     if(branch == 'master') {
                         //sh "update_job.sh ${K8S_NAMESPACE} ${PHP_JOB} ${PHP_JOB} ${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
-			sh 'kubectl -n default set image cronjob.batch/hello hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}'
+			sh 'kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}'
                     }
                     if(branch != 'master') {
                         sh "echo 'Unsupported branch.'"
