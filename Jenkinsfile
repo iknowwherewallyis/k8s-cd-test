@@ -25,7 +25,7 @@ podTemplate(label: 'docker-test',
                     //	chmod 777 /auth.sh
 	            //source /auth.sh 2> /dev/null'''
 		    echo "BUILDING IMAGE"
-                    app = docker.build("ccthub/jenkins", ".Dockerfile")
+                    app = docker.build("ccthub/jenkins", "Dockerfile")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 
                     app.push("test-delete")
