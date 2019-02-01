@@ -37,6 +37,7 @@ podTemplate(label: 'docker-test',
 		    echo "TAGGING IMAGE"
                     app.tag("latest")
     		    app.push("$commit_id")
+	            app.push("latest")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
