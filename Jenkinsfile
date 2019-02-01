@@ -3,9 +3,6 @@
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
-    //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'K8s_CREDS', variable: 'K8S_CREDS'],
-    //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'AWS_CREDS', variable: 'AWS_CREDS'],
-    //[$class: 'UsernamePasswordMultiBinding', credentialsId: 'DOCKERHUB_CREDS', variable: 'DOCKERHUB_CREDS']
 ]) {
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
