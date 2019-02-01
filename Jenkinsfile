@@ -89,9 +89,9 @@ podTemplate(label: 'docker-test',
     stage('Clone repository') {
            container('jnlp'){
            withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
-                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
+                    serverUrl: 'https://192.168.99.117:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
                     ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
