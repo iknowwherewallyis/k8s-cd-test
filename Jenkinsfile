@@ -1,5 +1,4 @@
-//TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
-//ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
+/*
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
@@ -16,17 +15,18 @@ podTemplate(label: 'docker-test',
 
     node ('docker-test'){
 	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
-		   withKubeConfig([credentialsId: "K8S_CREDS",
-                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
-			  ]){
+		   //withKubeConfig([credentialsId: "K8S_CREDS",
+                   // serverUrl: 'https://api.cct.marketing',
+                    //contextName: 'cct.marketing',
+                    //clusterName: 'cct.marketing',
+			//  ]){
+		   
 
     def app
    
 
            stage('Clone repository') {
-        /* Let's make sure we have the repository cloned to our workspace */
+
                     checkout scm
                     }
                 
@@ -69,4 +69,21 @@ podTemplate(label: 'docker-test',
         }
     }
 }
+}
+*/
+
+node {
+  stage('List pods') {
+           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+                    serverUrl: 'https://192.168.99.117:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
+                      ]) {
+      sh 'kubectl get pods --all-namespaces'
+      //sh 'kubectl cluster-info'
+      //sh 'kubectl -n jenkins set image deployment/jenkins-leader jenkins-leader=ccthub/jenkins:1.1'
+      //kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.91 --record=true
+    }
+  }
+  //  sh 'kubectl cluster-info'
 }
