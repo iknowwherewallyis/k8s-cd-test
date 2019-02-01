@@ -14,11 +14,11 @@ podTemplate(label: 'docker-test',
 
     node ('docker-test'){
 	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
-		   //withKubeConfig([credentialsId: "K8S_CREDS",
-                   // serverUrl: 'https://api.cct.marketing',
-                    //contextName: 'cct.marketing',
-                    //clusterName: 'cct.marketing',
-			//  ]){
+		   withKubeConfig([credentialsId: "K8S_CREDS",
+                   serverUrl: 'https://api.cct.marketing',
+                    contextName: 'cct.marketing',
+                    clusterName: 'cct.marketing',
+			  ]){
 		   
 
     def app
