@@ -56,6 +56,16 @@ podTemplate(label: 'docker-test',
                     }
                 }
             }
+	     stage ('Publish tagged php image') {
+                container('jnlp') {
+                    def branch = sh(returnStdout: true, script: 'git name-rev --name-only HEAD|cut -f3 -d/').trim()
+                    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
+                    if(branch == 'master') {
+                        echo "Pushing image to remote registry with TAG 'production'..."
+                        phpImage.push("production")
+                    }
+                }
+            }
         }
     }
 }
