@@ -1,5 +1,10 @@
 //TRYING TO USE DOCKER PLUGIN WITH SLAVES DOESN'T WORK (THEY ARE ALL SEPERATE CONTAINERS IN A POD, SO NOT RUNNING ON JENKINS LEADER/MASTER WHERE DOCKER PLUGIN IS CONFIGURED. 
 //ALL CONFIG FOR POD COMES FROM POD TEMPLATE, STILL NEED TO BIND TO HOST DOCKER SOCKET TO USE ANY DOCKER CMDS)
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
+
 podTemplate(label: 'docker-test', 
             //serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
@@ -25,7 +30,7 @@ podTemplate(label: 'docker-test',
                     //	chmod 777 /auth.sh
 	            //source /auth.sh 2> /dev/null'''
 		    echo "BUILDING IMAGE"
-                    app = docker.build("ccthub/jenkins", "Dockerfile")
+		    app = docker.build("${DISABLE_AUTH}", "Dockerfile")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 
                     app.push("test-delete")
