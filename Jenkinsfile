@@ -33,7 +33,7 @@ podTemplate(label: 'docker-test',
                 container('jnlp') {
    	        docker.withRegistry("${REPO_ADDRESS}", "282d475f-59e5-4487-a019-088461c228d0"){
 		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
-			echo ${commit_id}
+		    echo '${commit_id}'
 		    echo "BUILDING IMAGE"
 		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
                     //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
@@ -47,7 +47,7 @@ podTemplate(label: 'docker-test',
                 container('jnlp') {
                     def branch = sh(returnStdout: true, script: 'git name-rev --name-only HEAD|cut -f3 -d/').trim()
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
-			echo ${commit_id}
+			echo '${commit_id}'
                     if(branch == 'master') {
                         //sh "update_job.sh ${K8S_NAMESPACE} ${PHP_JOB} ${PHP_JOB} ${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
 			sh 'kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}'
