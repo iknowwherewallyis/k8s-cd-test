@@ -72,18 +72,37 @@ podTemplate(label: 'docker-test',
 }
 */
 
-node {
-  stage('List pods') {
+podTemplate(label: 'docker-test', 
+            serviceAccount: 'jenkins',
+            volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],
+        
+            containers: [
+            containerTemplate(name: 'jnlp', alwaysPullImage: true, image: 'ccthub/jkslave')
+            ])
+{
+    node ('docker-test'){
            withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
                     serverUrl: 'https://192.168.99.117:8443',
                     contextName: 'minikube',
                     clusterName: 'minikube',
                       ]) {
+    def app
+    stage('Clone repository') {
+           container('jnlp'){
+           //withKubeConfig([credentialsId: 'f398c71e-c372-459b-bb87-e93d03eb332c',
+             //       serverUrl: 'https://api.cct.marketing',
+               //     contextName: 'cct.marketing',
+                 //   clusterName: 'cct.marketing',
+                   // ]) {
+        sh "hostname"
+        //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
+        //checkout scm
+        //app = docker.build("getintodevops/hellonode")
       sh 'kubectl get pods --all-namespaces'
+      //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
-      //sh 'kubectl -n jenkins set image deployment/jenkins-leader jenkins-leader=ccthub/jenkins:1.1'
-      //kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.91 --record=true
+      //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
+   // }
+   // }
     }
-  }
-  //  sh 'kubectl cluster-info'
-}
+
