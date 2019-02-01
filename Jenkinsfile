@@ -31,7 +31,7 @@ podTemplate(label: 'docker-test',
 	            //source /auth.sh 2> /dev/null'''
 		    sh 'ls'
 		    echo "BUILDING IMAGE"
-		    app = docker.build("${PHP_REPO}", ".Dockerfile.php")
+		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 
                     app.push("test-delete")
