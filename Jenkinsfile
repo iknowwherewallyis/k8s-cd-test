@@ -29,13 +29,14 @@ podTemplate(label: 'docker-test',
                     //sh '''aws ecr get-login --no-include-email --region eu-central-1 > /auth.sh
                     //	chmod 777 /auth.sh
 	            //source /auth.sh 2> /dev/null'''
+		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 		    sh 'ls'
 		    echo "BUILDING IMAGE"
 		    app = docker.build("hello/test", "-f Dockerfile.php .")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 		    echo "TAGGING IMAGE"
-                    app.tag("123456")
-    		    app.push()
+                    app.tag("latest")
+    		    app.push("$commit_id")
                     }
                     //sh '''printf "\n\nPushing image: \n\n"
                     //        docker push $1 | grep -v "Preparing" | grep -v "Waiting" | grep -v "Layer already exists"
