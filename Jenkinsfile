@@ -74,7 +74,7 @@ podTemplate(label: 'docker-test',
 
 node {
   stage('List pods') {
-           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+           withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
                     serverUrl: 'https://192.168.99.117:8443',
                     contextName: 'minikube',
                     clusterName: 'minikube',
