@@ -14,7 +14,8 @@ podTemplate(label: 'docker-test',
 
 {
 
-    node ('docker-test'){    
+    node ('docker-test'){
+	   docker.withRegistry("${REPO_ADDRESS}", "282d475f-59e5-4487-a019-088461c228d0"){
            withKubeConfig([credentialsId: '53b54779-b270-4125-a152-d3f280f41672',
                     serverUrl: 'https://api.cct.marketing',
                     contextName: 'cct.marketing',
@@ -31,7 +32,6 @@ podTemplate(label: 'docker-test',
                 
             stage ('Build Application image') {
                 container('jnlp') {
-   	        docker.withRegistry("${REPO_ADDRESS}", "282d475f-59e5-4487-a019-088461c228d0"){
 		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 		    echo "BUILDING IMAGE"
 		    app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
