@@ -32,8 +32,9 @@ podTemplate(label: 'docker-test',
 		    def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 		    sh 'ls'
 		    echo "BUILDING IMAGE"
-		    app = docker.build("hello/test", "-f Dockerfile.php .")
-                    docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
+		    app = docker.build("ccthub/jenkins", "-f Dockerfile.php .")
+                    //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
+		    docker.withRegistry('https://registry.hub.docker.com', '282d475f-59e5-4487-a019-088461c228d0'){
 		    echo "TAGGING IMAGE"
                     app.tag("latest")
     		    app.push("$commit_id")
