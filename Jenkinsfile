@@ -1,4 +1,3 @@
-/*
 withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
@@ -70,8 +69,11 @@ podTemplate(label: 'docker-test',
     }
 }
 }
-*/
 
+
+
+
+/*
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
@@ -106,4 +108,4 @@ podTemplate(label: 'docker-test',
     }
     }
 }
-
+*/
