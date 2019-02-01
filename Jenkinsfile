@@ -32,7 +32,7 @@ podTemplate(label: 'docker-test',
         DB_ENGINE    = 'sqlite'
     }
 		    echo "BUILDING IMAGE"
-		    app = docker.build("${DISABLE_AUTH}", "Dockerfile")
+		    app = docker.build("${env.DISABLE_AUTH}", "Dockerfile")
                     docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 
                     app.push("test-delete")
