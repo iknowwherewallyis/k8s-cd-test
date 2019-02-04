@@ -94,10 +94,10 @@ podTemplate(label: 'docker-test',
     def app
     stage('Clone repository') {
            container('jnlp'){
-           withKubeConfig([credentialsId: 'c52ca836-2101-4aa1-955e-a29ba4c8ba95',
+           withKubeConfig([credentialsId: 'netsuite-token',
                     serverUrl: 'https://192.168.99.117:8443',
-                    contextName: 'minikube',
-                    clusterName: 'minikube',
+                    //contextName: 'minikube',
+                    //clusterName: 'minikube',
                     ]) {
         sh "hostname"
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
