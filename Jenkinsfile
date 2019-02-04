@@ -1,4 +1,4 @@
-/*withCredentials([
+withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
 ]) {
@@ -18,10 +18,10 @@ podTemplate(label: 'docker-test',
            //         serverUrl: 'https://192.168.99.117:8443',
            //         contextName: 'minikube',
            //         clusterName: 'minikube',
-		   withKubeConfig([credentialsId: "73bac5c2-0c92-463f-9118-e9d762b65581",
+		   withKubeConfig([credentialsId: "netsuite-consumer-token",
                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'netsuite-consumer',
-                    clusterName: 'cct.marketing',
+                    //contextName: 'netsuite-consumer',
+                    //clusterName: 'cct.marketing',
 			  ]){
 		   
 
@@ -76,8 +76,8 @@ podTemplate(label: 'docker-test',
 
 
 
-*/
 
+/*
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
@@ -112,4 +112,4 @@ podTemplate(label: 'docker-test',
     }
     }
 }
-
+*/
