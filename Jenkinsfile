@@ -103,7 +103,7 @@ podTemplate(label: 'docker-test',
         //sh "kubectl get po --all-namespaces" //this shouldn't work at all but it does
         //checkout scm
         //app = docker.build("getintodevops/hellonode")
-      sh 'kubectl get pods'
+      sh 'kubectl get cronjobs -n jenkins'
       //sh 'kubectl config current-context'
       //sh 'kubectl cluster-info'
       //sh 'kubectl get deployment jenkins-leader --namespace=jenkins'
