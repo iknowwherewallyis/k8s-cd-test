@@ -14,10 +14,14 @@ podTemplate(label: 'docker-test',
 
     node ('docker-test'){
 	   docker.withRegistry("${REPO_ADDRESS}", "DOCKERHUB_CREDS"){
-		   withKubeConfig([credentialsId: "K8s_CREDS",
-                   serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
-                    clusterName: 'cct.marketing',
+           withKubeConfig([credentialsId: '5b690a2e-c11b-4fa9-941d-08163a13c02c',
+                    serverUrl: 'https://192.168.99.117:8443',
+                    contextName: 'minikube',
+                    clusterName: 'minikube',
+		  // withKubeConfig([credentialsId: "K8s_CREDS",
+                  // serverUrl: 'https://api.cct.marketing',
+                   // contextName: 'cct.marketing',
+                  //  clusterName: 'cct.marketing',
 			  ]){
 		   
 
