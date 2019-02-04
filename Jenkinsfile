@@ -18,9 +18,9 @@ podTemplate(label: 'docker-test',
            //         serverUrl: 'https://192.168.99.117:8443',
            //         contextName: 'minikube',
            //         clusterName: 'minikube',
-		   withKubeConfig([credentialsId: "K8s_CREDS",
+		   withKubeConfig([credentialsId: "73bac5c2-0c92-463f-9118-e9d762b65581",
                    serverUrl: 'https://api.cct.marketing',
-                    contextName: 'cct.marketing',
+                    contextName: 'netsuite-consumer',
                     clusterName: 'cct.marketing',
 			  ]){
 		   
