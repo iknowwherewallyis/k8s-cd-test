@@ -1,4 +1,4 @@
-withCredentials([
+/*withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
 ]) {
@@ -75,9 +75,9 @@ podTemplate(label: 'docker-test',
 }
 
 
+*/
 
 
-/*
 podTemplate(label: 'docker-test', 
             serviceAccount: 'jenkins',
             volumes: [hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')],        
@@ -94,7 +94,7 @@ podTemplate(label: 'docker-test',
     def app
     stage('Clone repository') {
            container('jnlp'){
-           withKubeConfig([credentialsId: 'jenkins-token',
+           withKubeConfig([credentialsId: 'user-token',
                     serverUrl: 'https://192.168.99.117:8443',
                     //contextName: 'minikube',
                     //clusterName: 'minikube',
@@ -112,4 +112,4 @@ podTemplate(label: 'docker-test',
     }
     }
 }
-*/
+
