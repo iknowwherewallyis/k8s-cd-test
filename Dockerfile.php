@@ -1,8 +1,6 @@
 # use a node base image
 FROM node:7-onbuild
 
-#Adding new change
-#Adding another new change
 # set maintainer
 LABEL maintainer "miiro@getintodevops.com"
 
