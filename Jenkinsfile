@@ -1,4 +1,4 @@
-/*withCredentials([
+withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
 ]) {
@@ -50,7 +50,8 @@ podTemplate(label: 'docker-test',
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 			//echo "$commit_id"
                     if(branch == 'master') {
-			sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
+			//sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
+			kubernetesDeploy configs: "hello-kube.yaml", kubeconfigId: 'cct-kubeconfig'
                     }
                     if(branch != 'master') {
                         sh "echo 'Unsupported branch.'"
@@ -75,7 +76,7 @@ podTemplate(label: 'docker-test',
 }
 
 
-*/
+/*
 
 
 podTemplate(label: 'docker-test', 
@@ -113,3 +114,4 @@ podTemplate(label: 'docker-test',
     }
 }
 
+*/
