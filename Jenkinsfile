@@ -41,6 +41,7 @@ podTemplate(label: 'docker-test',
                     //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 		    echo "TAGGING IMAGE"
     		    app.push("$commit_id")
+	            app.push("latest")
                     }
                 }
             }
