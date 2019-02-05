@@ -49,6 +49,7 @@ podTemplate(label: 'docker-test',
                 container('jnlp') {
                     def branch = sh(returnStdout: true, script: 'git name-rev --name-only HEAD|cut -f3 -d/').trim()
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
+		    env.BUILD_TAG=commit_id
 			//echo "$commit_id"
                     if(branch == 'master') {
 			//sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
