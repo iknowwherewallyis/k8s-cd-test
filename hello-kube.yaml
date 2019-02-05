@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
       - name: hello-kubernetes
-        image: "ccthub/jenkins:1.0"
+        image: ccthub/jenkins:$BUILD_TAG
         ports:
         - containerPort: 80
