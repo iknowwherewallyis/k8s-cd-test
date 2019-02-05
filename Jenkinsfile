@@ -18,11 +18,11 @@ podTemplate(label: 'docker-test',
            //         serverUrl: 'https://192.168.99.117:8443',
            //         contextName: 'minikube',
            //         clusterName: 'minikube',
-		   withKubeConfig([credentialsId: "netsuite-consumer-token",
-                   serverUrl: 'https://api.cct.marketing',
+		   //withKubeConfig([credentialsId: "netsuite-consumer-token",
+                   //serverUrl: 'https://api.cct.marketing',
                     //contextName: 'netsuite-consumer',
                     //clusterName: 'cct.marketing',
-			  ]){
+			 // ]){
 		   
 
     def app
@@ -74,7 +74,7 @@ podTemplate(label: 'docker-test',
         }
     }
 }
-}
+//}
 
 
 /*
