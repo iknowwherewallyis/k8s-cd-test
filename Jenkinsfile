@@ -1,4 +1,4 @@
-/*withCredentials([
+withCredentials([
     string(credentialsId: 'PHP_REPO', variable: 'PHP_REPO'),
     string(credentialsId: 'REPO_ADDRESS', variable: 'REPO_ADDRESS'),
 ]) {
@@ -18,11 +18,11 @@ podTemplate(label: 'docker-test',
            //         serverUrl: 'https://192.168.99.117:8443',
            //         contextName: 'minikube',
            //         clusterName: 'minikube',
-		   withKubeConfig([credentialsId: "netsuite-consumer-token",
-                   serverUrl: 'https://api.cct.marketing',
+		   //withKubeConfig([credentialsId: "netsuite-consumer-token",
+                   //serverUrl: 'https://api.cct.marketing',
                     //contextName: 'netsuite-consumer',
                     //clusterName: 'cct.marketing',
-			  ]){
+			 // ]){
 		   
 
     def app
@@ -41,6 +41,7 @@ podTemplate(label: 'docker-test',
                     //docker.withRegistry('https://167611661240.dkr.ecr.eu-central-1.amazonaws.com', 'ecr:eu-central-1:581d148d-74b8-42c3-9d28-848c7f174a4f'){ 
 		    echo "TAGGING IMAGE"
     		    app.push("$commit_id")
+	            app.push("latest")
                     }
                 }
             }
@@ -50,7 +51,8 @@ podTemplate(label: 'docker-test',
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
 			//echo "$commit_id"
                     if(branch == 'master') {
-			sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
+			//sh "kubectl -n default set image cronjob.batch/test hello=${REPO_ADDRESS}/${PHP_REPO}:${commit_id}"
+			kubernetesDeploy configs: "hello-kube.yaml", kubeconfigId: 'cct-kubeconfig'
                     }
                     if(branch != 'master') {
                         sh "echo 'Unsupported branch.'"
@@ -72,10 +74,10 @@ podTemplate(label: 'docker-test',
         }
     }
 }
-}
+//}
 
 
-*/
+/*
 
 
 podTemplate(label: 'docker-test', 
@@ -113,3 +115,4 @@ podTemplate(label: 'docker-test',
     }
 }
 
+*/
