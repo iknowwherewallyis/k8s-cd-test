@@ -10,7 +10,7 @@ spec:
   selector:
     app: hello-kubernetes
 ---
-apiVersion: extensions/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: hello-kubernetes
