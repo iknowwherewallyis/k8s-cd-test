@@ -67,7 +67,7 @@ podTemplate(label: 'docker-test',
                     def commit_id = sh(returnStdout: true, script: 'git rev-parse HEAD').trim().take(7)
                     if(branch == 'master') {
                         echo "Pushing image to remote registry with TAG 'production'..."
-			app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
+			//app = docker.build("${PHP_REPO}", "-f Dockerfile.php .")
                         app.push("production")
                     }
                 }
